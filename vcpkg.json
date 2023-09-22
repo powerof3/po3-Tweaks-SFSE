@@ -1,0 +1,15 @@
+{
+  "name": "po3-tweaks-sfse",
+  "version-string": "1.0.0",
+  "description": "Collection of bug fixes and tweaks for Starfield",
+  "homepage": "",
+  "license": "MIT",
+  "dependencies": [
+    "boost-stl-interfaces",
+    "clib-util",
+    "unordered-dense",
+    "rsm-binary-io",
+    "spdlog",
+    "xbyak"
+  ]
+}
