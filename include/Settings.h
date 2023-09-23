@@ -44,9 +44,9 @@ private:
 		}
 	}
 
-    void LoadImpl(const wchar_t* a_path, const std::function<void(CSimpleIniA&)> a_func, bool a_generate);
+	void LoadImpl(const wchar_t* a_path, const std::function<void(CSimpleIniA&)> a_func, bool a_generate);
 
-    // members
+	// members
 	Fixes  fixes{};
 	Tweaks tweaks{};
 
