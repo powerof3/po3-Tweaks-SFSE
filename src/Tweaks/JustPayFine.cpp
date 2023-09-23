@@ -6,7 +6,7 @@ namespace Tweaks::JustPayFine
 	{
 		static void Thunk(RE::Actor* a_player, std::uintptr_t a_faction, [[maybe_unused]] bool a_goToJail, bool a_removeStolenItems)
 		{
-		    return func(a_player, a_faction, false, a_removeStolenItems);
+			return func(a_player, a_faction, a_player->IsInSpace() ? a_goToJail : false, a_removeStolenItems);
 		}
 		static inline REL::Relocation<decltype(Thunk)> func;
 		static inline std::size_t                      idx{ 0x14B };

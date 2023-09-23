@@ -3,12 +3,13 @@
 #define WIN32_LEAN_AND_MEAN
 #define NOMMNOSOUND
 
+#include "RE/E/ExtraDataTypes.h"
 #include "RE/Starfield.h"
 #include "SFSE/SFSE.h"
 
 #include <ClibUtil/simpleINI.hpp>
-#include <ClibUtil/string.hpp>
 #include <ClibUtil/singleton.hpp>
+#include <ClibUtil/string.hpp>
 #include <ankerl/unordered_dense.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <xbyak/xbyak.h>

@@ -11,11 +11,18 @@ namespace Tweaks::DontPickupBooks
 			return func(a_extraDataList);
 		}
 
+		bool has_extra_data(std::uintptr_t a_extraDataList, std::uint8_t a_type)
+		{
+			using func_t = decltype(&has_extra_data);
+			REL::Relocation<func_t> func{ REL::Offset(0x0125D414) };
+			return func(a_extraDataList, a_type);
+		}
+
 		bool is_normal_book(RE::TESObjectREFR* a_objREFR)
 		{
 			if (const auto baseObject = a_objREFR->GetBaseObject()) {
 				if (baseObject->Is(RE::FormType::kBOOK)) {
-					if (is_quest_item(a_objREFR->extraDataList) || a_objREFR->GetValue() > 0) {
+					if (has_extra_data(a_objREFR->extraDataList, static_cast<std::uint8_t>(RE::EXTRA_DATA_TYPE::kAliasInstanceArray)) || a_objREFR->GetValue() > 0) {
 						return false;
 					}
 					const auto flags = *stl::adjust_pointer<std::uint8_t>(baseObject, 0x258);
