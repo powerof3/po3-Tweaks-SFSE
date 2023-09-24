@@ -4,7 +4,7 @@ namespace Tweaks
 {
 	void Install();
 
-    namespace JustPayFine
+	namespace JustPayFine
 	{
 		void Install();
 	}
@@ -15,12 +15,12 @@ namespace Tweaks
 	}
 
 	namespace DontPickupBooks
-    {
+	{
 		void Install();
-    }
+	}
 
 	namespace DisableDockingIMOD
-    {
+	{
 		void Install();
-    }
+	}
 }
