@@ -32,8 +32,8 @@ namespace Tweaks::DontPickupBooks
 						return false;
 					}
 					const auto flags = *stl::adjust_pointer<std::uint8_t>(baseObject, 0x258);
-					if ((flags & 8) == 0) {  
-						return false;	// HasBeen NOT Read
+					if ((flags & 8) == 0) {
+						return false;  // HasBeen NOT Read
 					}
 					if ((flags & 1) != 0) {
 						return false;  // Teaches AV
@@ -67,7 +67,7 @@ namespace Tweaks::DontPickupBooks
 
 	void Install()
 	{
-		stl::write_vfunc<PickupObject>(RE::VTABLE::PlayerCharacter[25]); // why is it in the middle???
+		stl::write_vfunc<PickupObject>(RE::VTABLE::PlayerCharacter[25]);  // why is it in the middle???
 
 		logger::info("\tInstalled DontPickupReadBooks");
 	}
