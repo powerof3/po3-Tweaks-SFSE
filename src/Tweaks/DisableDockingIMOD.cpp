@@ -2,7 +2,7 @@
 
 namespace Tweaks::DisableDockingIMOD
 {
-	struct IMOD
+	struct TriggerImageSpaceModifier
 	{
 		static std::uintptr_t thunk(RE::TESForm* a_imod,
 			float                                a_strength,
@@ -23,8 +23,8 @@ namespace Tweaks::DisableDockingIMOD
 
 	void Install()
 	{
-		const REL::Relocation<std::uintptr_t> target{ REL::Offset(0x1D80EA4), 0x16C };  // PlayerCharacter::StartGrabObject
-		stl::write_thunk_call<IMOD>(target.address());
+		const REL::Relocation<std::uintptr_t> target{ REL::Offset(0x1D80EA4), 0x16C };  // ShipActionCameraState::InitCameraPath ?
+		stl::write_thunk_call<TriggerImageSpaceModifier>(target.address());
 
 		logger::info("\tInstalled DisableSpaceshipDockingIMOD");
 	}
