@@ -49,6 +49,7 @@ void Settings::Tweaks::Load(CSimpleIniA& a_ini, bool a_writeValues)
 	get_value(a_ini, grabWithoutStealing, section, "bGrabWithoutStealing", ";Grabbing items won't count as stealing", a_writeValues);
 	get_value(a_ini, justPayFine, section, "bSkipJailOnPayFine", ";Don't go to jail when paying fines", a_writeValues);
 	get_value(a_ini, dontPickupReadBooks, section, "bDontPickupReadBooks", ";Don't pick up books you read unless they're quest items/skill books/can be sold", a_writeValues);
+	get_value(a_ini, disableDockingIMOD, section, "bDisableSpaceshipDockingIMOD", ";Disables the docking sequence imagespace modifier", a_writeValues);
 }
 
 const Settings::Fixes& Settings::GetFixes() const

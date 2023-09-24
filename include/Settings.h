@@ -16,6 +16,7 @@ public:
 		bool justPayFine{ true };
 		bool grabWithoutStealing{ true };
 		bool dontPickupReadBooks{ true };
+		bool disableDockingIMOD{ true };
 	};
 
 	void Load();

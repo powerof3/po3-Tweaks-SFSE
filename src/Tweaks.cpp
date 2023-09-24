@@ -20,5 +20,9 @@ namespace Tweaks
 		if (tweaks.dontPickupReadBooks) {
 			DontPickupBooks::Install();
 		}
+
+		if (tweaks.disableDockingIMOD) {
+			DisableDockingIMOD::Install();
+		}
 	}
 }

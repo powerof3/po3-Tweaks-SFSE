@@ -5,11 +5,11 @@ namespace Tweaks::GrabWithoutStealing
 	// shortcircuit SendStealAlarm
     struct GetOwnedNoCrime
 	{
-		static bool Thunk([[maybe_unused]] std::uintptr_t a_extraDataList)
+		static bool thunk([[maybe_unused]] std::uintptr_t a_extraDataList)
 		{
 			return true;
 		}
-		static inline REL::Relocation<decltype(Thunk)> func;
+		static inline REL::Relocation<decltype(thunk)> func;
 	};
 
 	void Install()

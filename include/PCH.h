@@ -3,7 +3,6 @@
 #define WIN32_LEAN_AND_MEAN
 #define NOMMNOSOUND
 
-#include "RE/E/ExtraDataTypes.h"
 #include "RE/Starfield.h"
 #include "SFSE/SFSE.h"
 
@@ -39,7 +38,7 @@ namespace stl
 		SFSE::AllocTrampoline(14);
 
 		auto& trampoline = SFSE::GetTrampoline();
-		T::func = trampoline.write_branch<5>(a_src, T::Thunk);
+		T::func = trampoline.write_branch<5>(a_src, T::thunk);
 	}
 
 	inline std::string as_string(std::string_view a_view)

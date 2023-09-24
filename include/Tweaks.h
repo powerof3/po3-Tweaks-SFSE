@@ -18,4 +18,9 @@ namespace Tweaks
     {
 		void Install();
     }
+
+	namespace DisableDockingIMOD
+    {
+		void Install();
+    }
 }

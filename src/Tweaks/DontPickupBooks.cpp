@@ -22,7 +22,13 @@ namespace Tweaks::DontPickupBooks
 		{
 			if (const auto baseObject = a_objREFR->GetBaseObject()) {
 				if (baseObject->Is(RE::FormType::kBOOK)) {
-					if (has_extra_data(a_objREFR->extraDataList, static_cast<std::uint8_t>(RE::EXTRA_DATA_TYPE::kAliasInstanceArray)) || a_objREFR->GetValue() > 0) {
+					if (is_quest_item(a_objREFR->extraDataList)) {
+						return false;
+					}
+					if (has_extra_data(a_objREFR->extraDataList, static_cast<std::uint8_t>(RE::EXTRA_DATA_TYPE::kAliasInstanceArray))) {
+						return false;
+					}
+					if (a_objREFR->GetValue() > 0) {
 						return false;
 					}
 					const auto flags = *stl::adjust_pointer<std::uint8_t>(baseObject, 0x258);
@@ -47,7 +53,7 @@ namespace Tweaks::DontPickupBooks
 
 	struct PickupObject
 	{
-		static void Thunk(RE::Actor* a_player, RE::TESObjectREFR* a_objREFR, std::int32_t a_count, bool a_playPickUpSounds)
+		static void thunk(RE::Actor* a_player, RE::TESObjectREFR* a_objREFR, std::int32_t a_count, bool a_playPickUpSounds)
 		{
 			if (detail::is_normal_book(a_objREFR)) {
 				return;
@@ -55,7 +61,7 @@ namespace Tweaks::DontPickupBooks
 
 			return func(a_player, a_objREFR, a_count, a_playPickUpSounds);
 		}
-		static inline REL::Relocation<decltype(Thunk)> func;
+		static inline REL::Relocation<decltype(thunk)> func;
 		static inline std::size_t                      idx{ 0x15B };
 	};
 
