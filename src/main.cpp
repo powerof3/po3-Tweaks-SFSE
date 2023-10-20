@@ -9,7 +9,9 @@ void MessageHandler(SFSE::MessagingInterface::Message* a_message)
 	case SFSE::MessagingInterface::kPostLoad:
 		{
 			logger::info("{:*^50}", "POST LOAD"sv);
-			//Fixes::Install();
+
+			Settings::GetSingleton()->Load();
+
 			Tweaks::Install();
 		}
 		break;
@@ -24,11 +26,11 @@ DLLEXPORT constinit auto SFSEPlugin_Version = []() noexcept {
 	data.PluginVersion(Version::MAJOR);
 	data.PluginName(Version::PROJECT);
 	data.AuthorName("powerofthree");
-	data.UsesSigScanning(true);
-	//data.UsesAddressLibrary(true);
-	data.HasNoStructUse(true);
-	//data.IsLayoutDependent(true);
-	data.CompatibleVersions({ SFSE::RUNTIME_SF_1_7_29 });
+	data.UsesAddressLibrary(true);
+	//data.UsesSigScanning(true);
+	data.IsLayoutDependent(true);
+	//data.HasNoStructUse(true);
+	data.CompatibleVersions({ SFSE::RUNTIME_LATEST });
 
 	return data;
 }();
@@ -39,12 +41,6 @@ DLLEXPORT bool SFSEAPI SFSEPlugin_Load(const SFSE::LoadInterface* a_sfse)
 
 	logger::info("Game version : {}", a_sfse->RuntimeVersion().string());
 	logger::info("Plugin version : {}", Version::NAME);
-
-	try {
-		Settings::GetSingleton()->Load();
-	} catch (...) {
-		logger::error("Exception caught when loading settings! Default settings will be used");
-	}
 
 	const auto messaging = SFSE::GetMessagingInterface();
 	messaging->RegisterListener(MessageHandler);

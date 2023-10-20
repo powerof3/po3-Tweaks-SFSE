@@ -14,12 +14,12 @@ namespace Tweaks::JustPayFine
 
 	void Install()
 	{
-		stl::write_vfunc<PayFine>(RE::VTABLE::PlayerCharacter[25]);
+		stl::write_vfunc<PayFine>(RE::VTABLE::PlayerCharacter[38]);
 
-		const REL::Relocation<std::uintptr_t> console{ REL::Offset(0x01AB32FC), 0xB9 };
+		const REL::Relocation<std::uintptr_t> console{ REL::ID(110020), 0xB9 };
 		stl::write_thunk_call<PayFine>(console.address());  // Console
 
-		const REL::Relocation<std::uintptr_t> papyrus{ REL::Offset(0x02A2DA60), 0x10 };
+		const REL::Relocation<std::uintptr_t> papyrus{ REL::ID(171509), 0x10 };
 		stl::write_thunk_jump<PayFine>(papyrus.address());  // Papyrus
 
 		logger::info("\tInstalled JustPayFine");

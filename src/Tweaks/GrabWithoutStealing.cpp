@@ -14,7 +14,7 @@ namespace Tweaks::GrabWithoutStealing
 
 	void Install()
 	{
-		const REL::Relocation<std::uintptr_t> target{ REL::Offset(0x258D6FC), 0x304 };  // PlayerCharacter::StartGrabObject
+		const REL::Relocation<std::uintptr_t> target{ REL::ID(153767), 0x304 };  // PlayerCharacter::StartGrabObject
 		stl::write_thunk_call<GetOwnedNoCrime>(target.address());
 
 		logger::info("\tInstalled GrabWithoutStealing");

@@ -7,14 +7,14 @@ namespace Tweaks::DontPickupBooks
 		bool is_quest_item(std::uintptr_t a_extraDataList)
 		{
 			using func_t = decltype(&is_quest_item);
-			REL::Relocation<func_t> func{ REL::Offset(0x014265C8) };
+			REL::Relocation<func_t> func{ REL::ID(83336) };
 			return func(a_extraDataList);
 		}
 
 		bool has_extra_data(std::uintptr_t a_extraDataList, std::uint8_t a_type)
 		{
 			using func_t = decltype(&has_extra_data);
-			REL::Relocation<func_t> func{ REL::Offset(0x0125D414) };
+			REL::Relocation<func_t> func{ REL::ID(72781) };
 			return func(a_extraDataList, a_type);
 		}
 
@@ -67,7 +67,7 @@ namespace Tweaks::DontPickupBooks
 
 	void Install()
 	{
-		stl::write_vfunc<PickupObject>(RE::VTABLE::PlayerCharacter[25]);  // why is it in the middle???
+		stl::write_vfunc<PickupObject>(RE::VTABLE::PlayerCharacter[38]);
 
 		logger::info("\tInstalled DontPickupReadBooks");
 	}

@@ -1,6 +1,8 @@
 #include "Tweaks.h"
 #include "Settings.h"
 
+#include <RE/T/TESDeathEvent.h>
+
 namespace Tweaks
 {
 	void Install()
