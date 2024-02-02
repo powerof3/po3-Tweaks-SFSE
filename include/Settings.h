@@ -6,6 +6,9 @@ public:
 	struct Fixes
 	{
 		void Load(CSimpleIniA& a_ini, bool a_writeValues);
+
+		//members
+		bool loadEDID{ true };
 	};
 
 	struct Tweaks

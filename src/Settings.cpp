@@ -4,12 +4,14 @@ void Settings::Load()
 {
 	LoadImpl(
 		path, [&](CSimpleIniA& a_ini) {
+			fixes.Load(a_ini, true);
 			tweaks.Load(a_ini, true);
 		},
 		true);
 
 	LoadImpl(
 		userPath, [&](CSimpleIniA& a_ini) {
+			fixes.Load(a_ini, false);
 			tweaks.Load(a_ini, false);
 		},
 		false);
@@ -37,9 +39,11 @@ void Settings::LoadImpl(const wchar_t* a_path, const std::function<void(CSimpleI
 	}
 }
 
-void Settings::Fixes::Load([[maybe_unused]] CSimpleIniA& a_ini, [[maybe_unused]] bool a_set)
+void Settings::Fixes::Load(CSimpleIniA& a_ini, bool a_writeValues)
 {
-	return;
+	const char* section = "Fixes";
+
+	get_value(a_ini, loadEDID, section, "bCacheEditorIDs", ";Load editorIDs for skipped forms", a_writeValues);
 }
 
 void Settings::Tweaks::Load(CSimpleIniA& a_ini, bool a_writeValues)

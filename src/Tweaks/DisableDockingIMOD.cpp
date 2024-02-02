@@ -1,7 +1,5 @@
 #include "Tweaks.h"
 
-#include "RE/T/TESDeathEvent.h"
-
 namespace Tweaks::DisableDockingIMOD
 {
 	struct TriggerImageSpaceModifier
@@ -23,29 +21,11 @@ namespace Tweaks::DisableDockingIMOD
 		static inline REL::Relocation<decltype(thunk)> func;
 	};
 
-	class HUDHandler : public ISingleton<HUDHandler>, public RE::BSTEventSink<RE::TESDeathEvent>
-	{
-	public:
-		RE::EventResult ProcessEvent(const RE::TESDeathEvent& a_event, RE::BSTEventSource<RE::TESDeathEvent>* a_eventSource) override;
-	};
-
-    RE::EventResult HUDHandler::ProcessEvent(const RE::TESDeathEvent& a_event, RE::BSTEventSource<RE::TESDeathEvent>*)
-    {
-		if (const auto actor = a_event.actorDying; actor && !a_event.dead) {
-			logger::info("{} [{}]", actor->GetDisplayFullName(), actor->refCount);
-		}
-
-		return RE::EventResult::kContinue;
-    }
-
 	void Install()
 	{
 		const REL::Relocation<std::uintptr_t> target{ REL::ID(120385), 0x16C };  // ShipActionCameraState::InitCameraPath ?
 		stl::write_thunk_call<TriggerImageSpaceModifier>(target.address());
 
-		RE::TESDeathEvent::GetEventSource()->RegisterSink(HUDHandler::GetSingleton());
-
-			logger::info("\tInstalled DisableSpaceshipDockingIMOD");
+		logger::info("\tInstalled DisableSpaceshipDockingIMOD");
 	}
-
 }

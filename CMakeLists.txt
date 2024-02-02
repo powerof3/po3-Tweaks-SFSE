@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 set(NAME "po3_TweaksSF" CACHE STRING "")
-set(VERSION 1.1.1 CACHE STRING "")
+set(VERSION 1.2.0 CACHE STRING "")
 
 # ---- Options ----
 
@@ -61,10 +61,6 @@ if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
 endif()
 
 # ---- Globals ----
-
-add_compile_definitions(
-	SFSE_SUPPORT_XBYAK
-)
 
 if (MSVC)
 	if (NOT ${CMAKE_GENERATOR} STREQUAL "Ninja")

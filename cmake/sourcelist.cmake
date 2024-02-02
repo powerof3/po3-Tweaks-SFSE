@@ -1,5 +1,7 @@
 set(sources ${sources}
+	src/Cache.cpp
 	src/Fixes.cpp
+	src/Fixes/CacheEditorIDs.cpp
 	src/PCH.cpp
 	src/Papyrus.cpp
 	src/Settings.cpp

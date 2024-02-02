@@ -1,5 +1,6 @@
 #include "Fixes.h"
 #include "Papyrus.h"
+#include "PCH.h"
 #include "Settings.h"
 #include "Tweaks.h"
 
@@ -9,11 +10,13 @@ void MessageHandler(SFSE::MessagingInterface::Message* a_message)
 	case SFSE::MessagingInterface::kPostLoad:
 		{
 			logger::info("{:*^50}", "POST LOAD"sv);
-
 			Settings::GetSingleton()->Load();
 
+			Fixes::Install();
 			Tweaks::Install();
 		}
+		break;
+	case SFSE::MessagingInterface::MessageType::kPostPostDataLoad:
 		break;
 	default:
 		break;
@@ -27,9 +30,7 @@ DLLEXPORT constinit auto SFSEPlugin_Version = []() noexcept {
 	data.PluginName(Version::PROJECT);
 	data.AuthorName("powerofthree");
 	data.UsesAddressLibrary(true);
-	//data.UsesSigScanning(true);
 	data.IsLayoutDependent(true);
-	//data.HasNoStructUse(true);
 	data.CompatibleVersions({ SFSE::RUNTIME_LATEST });
 
 	return data;

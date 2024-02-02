@@ -4,44 +4,27 @@ namespace Tweaks::DontPickupBooks
 {
 	namespace detail
 	{
-		bool is_quest_item(std::uintptr_t a_extraDataList)
-		{
-			using func_t = decltype(&is_quest_item);
-			REL::Relocation<func_t> func{ REL::ID(83336) };
-			return func(a_extraDataList);
-		}
-
-		bool has_extra_data(std::uintptr_t a_extraDataList, std::uint8_t a_type)
-		{
-			using func_t = decltype(&has_extra_data);
-			REL::Relocation<func_t> func{ REL::ID(72781) };
-			return func(a_extraDataList, a_type);
-		}
-
 		bool is_normal_book(RE::TESObjectREFR* a_objREFR)
 		{
 			if (const auto baseObject = a_objREFR->GetBaseObject()) {
-				if (baseObject->Is(RE::FormType::kBOOK)) {
-					if (is_quest_item(a_objREFR->extraDataList)) {
-						return false;
+				if (const auto book = baseObject->As<RE::TESObjectBOOK>()) {
+					const auto flags = book->data.flags;
+					if (flags.none(RE::OBJ_BOOK::Flag::kHasBeenRead)) {
+						return false;  // HasBeen NOT Read
 					}
-					if (has_extra_data(a_objREFR->extraDataList, static_cast<std::uint8_t>(RE::EXTRA_DATA_TYPE::kAliasInstanceArray))) {
+					if (a_objREFR->extraDataList->IsQuestItem() || a_objREFR->extraDataList->HasType(RE::ExtraDataType::kAliasInstanceArray)) {
 						return false;
 					}
 					if (a_objREFR->GetValue() > 0) {
 						return false;
 					}
-					const auto flags = *stl::adjust_pointer<std::uint8_t>(baseObject, 0x258);
-					if ((flags & 8) == 0) {
-						return false;  // HasBeen NOT Read
-					}
-					if ((flags & 1) != 0) {
+					if (flags.any(RE::OBJ_BOOK::Flag::kAdvancesActorValue)) {
 						return false;  // Teaches AV
 					}
-					if ((flags & 4) != 0) {
+					if (flags.any(RE::OBJ_BOOK::Flag::kTeachesSpell)) {
 						return false;  // Teaches Spell
 					}
-					if ((flags & 16) != 0) {
+					if (flags.any(RE::OBJ_BOOK::Flag::kTeachesPerk)) {
 						return false;  // Teaches Perk
 					}
 					return true;
