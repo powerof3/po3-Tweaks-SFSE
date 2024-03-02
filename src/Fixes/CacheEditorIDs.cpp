@@ -78,8 +78,10 @@ namespace Fixes::CacheEditorIDs
 		// loading skipped
 		// HookEditorID<RE::BGSAddonNode>(1);
 
-		HookEditorID<RE::BGSCameraShot>(0);
-		HookEditorID<RE::BGSCameraPath>(1);
+		// hangs credit menu
+		// HookEditorID<RE::BGSCameraShot>(0);
+		// HookEditorID<RE::BGSCameraPath>(1);
+
 		HookEditorID<RE::BGSMaterialType>(1);
 		HookEditorID<RE::BGSImpactData>(2);
 		HookEditorID<RE::BGSImpactDataSet>(1);
