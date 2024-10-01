@@ -12,7 +12,7 @@ namespace Tweaks::DontPickupBooks
 					if (flags.none(RE::OBJ_BOOK::Flag::kHasBeenRead)) {
 						return false;  // HasBeen NOT Read
 					}
-					if (a_objREFR->extraDataList->IsQuestItem() || a_objREFR->extraDataList->HasType(RE::ExtraDataType::kAliasInstanceArray)) {
+					if (a_objREFR->extraDataList->HasQuestObjectAlias() || a_objREFR->extraDataList->HasType(RE::ExtraDataType::kAliasInstanceArray)) {
 						return false;
 					}
 					if (a_objREFR->GetValue() > 0) {

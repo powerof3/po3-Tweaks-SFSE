@@ -7,7 +7,7 @@ namespace Fixes
 	{
 		logger::info("[FIXES]");
 
-		const auto fixes = Settings::GetSingleton()->GetFixes();
+		const auto& fixes = Settings::GetSingleton()->GetFixes();
 
 		if (fixes.loadEDID) {
 			CacheEditorIDs::Install();

@@ -1,6 +1,6 @@
 {
   "name": "po3-tweaks-sfse",
-  "version-string": "1.2.1",
+  "version-string": "1.2.2",
   "description": "Collection of bug fixes and tweaks for Starfield",
   "homepage": "",
   "license": "MIT",
@@ -11,5 +11,6 @@
     "rsm-binary-io",
     "spdlog",
     "xbyak"
-  ]
+  ],
+  "builtin-baseline": "76d153790caf0592fce8fc4484aa6db18c7d00d4"
 }

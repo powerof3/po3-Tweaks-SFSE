@@ -40,7 +40,7 @@ DLLEXPORT bool SFSEAPI SFSEPlugin_Load(const SFSE::LoadInterface* a_sfse)
 {
 	SFSE::Init(a_sfse);
 
-	logger::info("Game version : {}", a_sfse->RuntimeVersion().string());
+	logger::info("Game version : {}", a_sfse->RuntimeVersion());
 	logger::info("Plugin version : {}", Version::NAME);
 
 	const auto messaging = SFSE::GetMessagingInterface();
