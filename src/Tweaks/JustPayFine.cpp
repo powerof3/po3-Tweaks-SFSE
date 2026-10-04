@@ -9,7 +9,7 @@ namespace Tweaks::JustPayFine
 			return func(a_player, a_faction, a_player->IsInSpace(true) ? a_goToJail : false, a_removeStolenItems);
 		}
 		static inline REL::Relocation<decltype(thunk)> func;
-		static inline std::size_t                      idx{ 0x14B };
+		static inline std::size_t                      idx{ 0x14A };
 	};
 
 	void Install()

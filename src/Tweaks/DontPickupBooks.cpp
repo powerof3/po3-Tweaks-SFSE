@@ -4,9 +4,9 @@ namespace Tweaks::DontPickupBooks
 {
 	namespace detail
 	{
-		bool is_normal_book(RE::TESObjectREFR* a_objREFR)
+		static bool is_normal_book(RE::TESObjectREFR* a_objREFR)
 		{
-			if (const auto baseObject = a_objREFR->GetBaseObject()) {
+			if (const auto baseObject = a_objREFR ? a_objREFR->GetBaseObject(): nullptr) {
 				if (const auto book = baseObject->As<RE::TESObjectBOOK>()) {
 					const auto flags = book->data.flags;
 					if (flags.none(RE::OBJ_BOOK::Flag::kHasBeenRead)) {
@@ -45,7 +45,7 @@ namespace Tweaks::DontPickupBooks
 			return func(a_player, a_objREFR, a_count, a_playPickUpSounds);
 		}
 		static inline REL::Relocation<decltype(thunk)> func;
-		static inline std::size_t                      idx{ 0x15B };
+		static inline std::size_t                      idx{ 0x15A };
 	};
 
 	void Install()

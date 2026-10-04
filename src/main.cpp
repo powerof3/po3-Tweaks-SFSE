@@ -37,7 +37,7 @@ SFSE_EXPORT constinit auto SFSEPlugin_Version = []() noexcept {
 	return data;
 }();
 
-SFSEPluginLoad(const SFSE::LoadInterface* a_sfse)
+SFSE_PLUGIN_LOAD(const SFSE::LoadInterface* a_sfse)
 {
 	SFSE::Init(a_sfse, { .trampoline = true, .trampolineSize = 56 });
 	SFSE::GetMessagingInterface()->RegisterListener(MessageHandler);

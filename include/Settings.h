@@ -1,6 +1,6 @@
 #pragma once
 
-class Settings : public REX::Singleton<Settings>
+class Settings : public REX::TSingleton<Settings>
 {
 public:
 	struct Fixes
