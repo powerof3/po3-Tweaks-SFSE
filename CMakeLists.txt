@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 set(NAME "po3_TweaksSF" CACHE STRING "")
-set(VERSION 2.0.3 CACHE STRING "")
+set(VERSION 2.0.4 CACHE STRING "")
 
 # ---- Options ----
 

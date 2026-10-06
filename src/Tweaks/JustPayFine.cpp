@@ -14,7 +14,7 @@ namespace Tweaks::JustPayFine
 
 	void Install()
 	{
-		stl::write_vfunc<PayFine>(RE::VTABLE::PlayerCharacter[13]);
+		stl::write_vfunc<PayFine>(RE::PlayerCharacter::VTABLE[41]);
 
 		const REL::Relocation<std::uintptr_t> console{ REL::ID(66511), 0xB9 };
 		stl::write_thunk_call<PayFine>(console.address());  // Console
