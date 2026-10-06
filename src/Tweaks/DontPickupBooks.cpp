@@ -6,7 +6,7 @@ namespace Tweaks::DontPickupBooks
 	{
 		static bool is_normal_book(RE::TESObjectREFR* a_objREFR)
 		{
-			if (const auto baseObject = a_objREFR ? a_objREFR->GetBaseObject(): nullptr) {
+			if (const auto baseObject = a_objREFR ? a_objREFR->GetBaseObject() : nullptr) {
 				if (const auto book = baseObject->As<RE::TESObjectBOOK>()) {
 					const auto flags = book->data.flags;
 					if (flags.none(RE::OBJ_BOOK::Flag::kHasBeenRead)) {

@@ -1,9 +1,9 @@
+#include "Cache.h"
 #include "Fixes.h"
-#include "Papyrus.h"
 #include "PCH.h"
+#include "Papyrus.h"
 #include "Settings.h"
 #include "Tweaks.h"
-#include "Cache.h"
 
 void MessageHandler(SFSE::MessagingInterface::Message* a_message)
 {
